@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": 763,
   "graphTooltip": 0,
-  "id": 252,
-  "iteration": 1622629898061,
+  "id": 255,
+  "iteration": 1622639297539,
   "links": [],
   "panels": [
     {
@@ -85,7 +85,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": true
       },
-      "tableColumn": "",
+      "tableColumn": "redis_evicted_keys_total{instance=\"redis-3.dev.intra.hgw.yo-digital.com:9121\", job=\"redis_exporter\"}",
       "targets": [
         {
           "expr": "redis_evicted_keys_total{instance=~\"$instance\"}",
@@ -173,7 +173,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": true
       },
-      "tableColumn": "",
+      "tableColumn": "redis_rdb_bgsave_in_progress{instance=\"redis-3.dev.intra.hgw.yo-digital.com:9121\", job=\"redis_exporter\"}",
       "targets": [
         {
           "expr": "redis_rdb_bgsave_in_progress{instance=~\"$instance\"}",
@@ -455,7 +455,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": true
       },
-      "tableColumn": "",
+      "tableColumn": "redis_connected_clients{instance=\"redis-3.dev.intra.hgw.yo-digital.com:9121\", job=\"redis_exporter\"}",
       "targets": [
         {
           "expr": "redis_connected_clients{instance=~\"$instance\"}",
@@ -547,7 +547,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": true
       },
-      "tableColumn": "",
+      "tableColumn": "redis_blocked_clients{instance=\"redis-3.dev.intra.hgw.yo-digital.com:9121\", job=\"redis_exporter\"}",
       "targets": [
         {
           "expr": "redis_blocked_clients{instance=~\"$instance\"}",
@@ -635,7 +635,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": true
       },
-      "tableColumn": "",
+      "tableColumn": "redis_rejected_connections_total{instance=\"redis-3.dev.intra.hgw.yo-digital.com:9121\", job=\"redis_exporter\"}",
       "targets": [
         {
           "expr": "redis_rejected_connections_total{instance=~\"$instance\"}",
@@ -1201,7 +1201,8 @@
         "alignLevel": null
       }
     },
-    { "aliasColors": {},
+    {
+      "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -1214,7 +1215,7 @@
         },
         "overrides": []
       },
-      "fill": 1,
+      "fill": 2,
       "fillGradient": 0,
       "grid": {},
       "gridPos": {
@@ -1566,8 +1567,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "tags": []
+          "selected": false,
           "text": "redis_exporter",
           "value": "redis_exporter"
         },
@@ -1579,7 +1579,7 @@
         "multi": true,
         "name": "job",
         "options": [],
-        "query": "label_values(redis_up{job=~\"redis_exporter\"})",
+        "query": "label_values(redis_up{job=~\"redis_exporter\"},job)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -1594,7 +1594,6 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -1608,7 +1607,7 @@
         "multi": true,
         "name": "instance",
         "options": [],
-        "query": "label_values(redis_up{job=~\"redis_exporter\"},instance)",
+        "query": "label_values(redis_up{job=~\"$job\"},instance)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -1677,6 +1676,6 @@
   },
   "timezone": "browser",
   "title": "Redis Cluster",
-  "uid": "GRgH4P1wGz",
-  "version": 1
+  "uid": "GEgH4P1wGz",
+  "version": 4
 }
